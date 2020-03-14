@@ -28,9 +28,10 @@ To change this license header, choose License Headers in Project Properties.
                     <p:outputLabel for= "txtNombre" value="Nombre"/>
              <p:inputText id = "txtNombre" value="#{peliculaBean.pelicula.nombre}"/>
              
-                <p:outputLabel for= "txtImagen" value="Cargar Imagen"/>
-                <p:inputText id = "txtImagen" type="file" value="#{peliculaBean.pelicula.imagen}"/>
-             
+                                     
+                     <p:outputLabel value="Cargar Imagen" />
+                     <p:fileUpload value="#{peliculaBean.file}" mode="simple" skinSimple="true"/>
+
              
                 <p:outputLabel for= "txtCalificacion" value="Calificacion"/>
                 <p:inputText id = "txtCalificacion" value="#{peliculaBean.pelicula.calificacion}"/>
@@ -62,8 +63,10 @@ To change this license header, choose License Headers in Project Properties.
                           </p:column>  
                 
            <p:column headerText="Modificar" >
-                 <p:commandLink value="modificar" actionListener="#{peliculaBean.leerEdirarPelicula(pelic)}" oncomplete="PF('wdlDatos').show();" update=":frm:data"/>
+                 <p:commandLink value="Modificar" actionListener="#{peliculaBean.leerEdirarPelicula(pelic)}" oncomplete="PF('wdlDatos').show();" update=":dlgDatos"/>
               </p:column> 
+                 
+                 
                 
                 <p:column headerText="Eliminar" >
                     <p:commandLink value="Eliminar" actionListener="#{peliculaBean.eliminarPelicula(pelic)}"  update="data"/>
@@ -73,7 +76,8 @@ To change this license header, choose License Headers in Project Properties.
                            
                 </h:form>
       
-        
+    
+    
         <p:dialog header="Cambiar Datos" widgetVar="wdlDatos" id="dlgDatos" showEffect="explode" hideEffect="bounce" height="100">
         <h:form>
                        <p:outputLabel value="Nombre"/> 
@@ -86,9 +90,14 @@ To change this license header, choose License Headers in Project Properties.
                                 <f:selectItem  itemLabel="Pelicula " itemValue="pelicula"/>
                             </p:selectOneMenu>  
                    
-                     <p:outputLabel for="txtImagen" value="Imagen" />
-                     <p:inputText id="txtImagen" value="#{peliculaBean.pelicula.imagen}"/>
-   
+                     <p:outputLabel value="Imagen" />
+                <h:form enctype="multipart/form-data">        
+                   <p:fileUpload value="#{peliculaBean.selPeliSerie.imagen}" mode="simple" skinSimple="true"/>
+                   <br />
+                   <p:commandButton value="Submit" ajax="false" action="#{fileUploadView.upload}" disabled="true" />
+               </h:form>
+                     
+                     
                                   
        <p:outputLabel value="Duracion"/> 
                      <p:inputText value="#{peliculaBean.pelicula.duracion}"/>
