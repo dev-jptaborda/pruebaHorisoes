@@ -15,7 +15,8 @@ To change this license header, choose License Headers in Project Properties.
     <h:body>
 
       <p:growl id="msj" showDetail="true"/>
-                <h:form>
+                <h:form id = "frm">
+                    
                               <p:outputLabel  value="Tipo" />
                             <p:selectOneMenu value="#{peliculaBean.pelicula.tipo}">
                                 <f:selectItem  itemLabel="Seleccionar.." itemValue=""/>
@@ -24,55 +25,78 @@ To change this license header, choose License Headers in Project Properties.
                             </p:selectOneMenu>  
                      
   
-                    
-             <p:outputLabel for= "txtNombre" value="Nombre"/>
+                    <p:outputLabel for= "txtNombre" value="Nombre"/>
              <p:inputText id = "txtNombre" value="#{peliculaBean.pelicula.nombre}"/>
              
                 <p:outputLabel for= "txtImagen" value="Cargar Imagen"/>
-             <p:inputText id = "txtImagen" value="#{peliculaBean.pelicula.nombre}"/>
+                <p:inputText id = "txtImagen" type="file" value="#{peliculaBean.pelicula.imagen}"/>
              
              
                 <p:outputLabel for= "txtCalificacion" value="Calificacion"/>
-             <p:inputText id = "txtCalificacion" value="#{peliculaBean.pelicula.nombre}"/>
+                <p:inputText id = "txtCalificacion" value="#{peliculaBean.pelicula.calificacion}"/>
              
              
                 <p:outputLabel for= "txturacion" value="Duracion"/>
                 <p:inputText id = "txturacion" value="#{peliculaBean.pelicula.duracion}"/>
-             
-             
-             <p:commandButton value="Registrar" actionListener="#{peliculaBean.crearPelicula()}"/>
 
-             <p:dataTable id="data" value="#{peliculaBean.listarPeliculas}" var="peliculas" >
+
+             <p:commandButton value="Registrar" actionListener="#{peliculaBean.crearPelicula()}"/>
+             
+             <p:dataTable id="data" value="#{peliculaBean.listarPeliculas}" var="pelic" >
                   <p:column headerText="Identificador Pelicula" >
-                      <p:outputLabel value="#{peliculas.idpeli_serie}"/>
+                      <p:outputLabel value="#{pelic.idpeli_serie}"/>
                        </p:column>
                   <p:column headerText="Nombre" >
-                      <p:outputLabel value="#{peliculas.nombre}"/>
+                      <p:outputLabel value="#{pelic.nombre}"/>
                       </p:column>
                    <p:column headerText="Tipo" >
-                       <p:outputLabel value="#{peliculas.tipo}"/>
+                       <p:outputLabel value="#{pelic.tipo}"/>
                           </p:column>                      
                  
                  <p:column headerText="Imagen" >
-                     <p:outputLabel value="#{peliculas.imagen}"/>
+                     <p:outputLabel value="#{pelic.imagen}"/>
                           </p:column>  
                                   
                  <p:column headerText="Duracion" >
-                     <p:outputLabel value="#{peliculas.duracion}"/>
+                     <p:outputLabel value="#{pelic.duracion}"/>
                           </p:column>  
                 
-                <p:column headerText="Modificar" >
-            
+           <p:column headerText="Modificar" >
+                 <p:commandLink value="modificar" actionListener="#{peliculaBean.leerEdirarPelicula(pelic)}" oncomplete="PF('wdlDatos').show();" update=":frm:data"/>
               </p:column> 
                 
                 <p:column headerText="Eliminar" >
-                    <p:commandLink value="Eliminar" actionListener="#{peliculaBean.eliminarPelicula(peliculas)}"  update="data"/>
-              
-                          </p:column>
+                    <p:commandLink value="Eliminar" actionListener="#{peliculaBean.eliminarPelicula(pelic)}"  update="data"/>
+                </p:column>
             
               </p:dataTable>
-                    
-       
+                           
                 </h:form>
+      
+        
+        <p:dialog header="Cambiar Datos" widgetVar="wdlDatos" id="dlgDatos" showEffect="explode" hideEffect="bounce" height="100">
+        <h:form>
+                       <p:outputLabel value="Nombre"/> 
+                       <p:inputText value="#{peliculaBean.pelicula.nombre}"/>
+                
+                           <p:outputLabel  value="Tipo" />
+                           <p:selectOneMenu value="#{peliculaBean.pelicula.tipo}">
+                                <f:selectItem  itemLabel="Seleccionar.." itemValue=""/>
+                                <f:selectItem  itemLabel="Serie" itemValue="serie"/>   
+                                <f:selectItem  itemLabel="Pelicula " itemValue="pelicula"/>
+                            </p:selectOneMenu>  
+                   
+                     <p:outputLabel for="txtImagen" value="Imagen" />
+                     <p:inputText id="txtImagen" value="#{peliculaBean.pelicula.imagen}"/>
+   
+                                  
+       <p:outputLabel value="Duracion"/> 
+                     <p:inputText value="#{peliculaBean.pelicula.duracion}"/>
+                
+                <p:commandButton value="Cambiar" actionListener="#{peliculaBean.editarPelicula()}" oncomplete="PF('wdlDatos').hide();" update=":frm:data"/>
+             
+        </h:form>
+        </p:dialog>
+      
       </h:body>
 </html>

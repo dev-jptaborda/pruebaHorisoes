@@ -84,7 +84,7 @@ public class PeliculaDao extends DAO
 
             while (rs.next()) {
                 pel = new Pelicula();
-                pel.setIdpeli_serie(rs.getInt("getIdpeli_serie"));
+                pel.setIdpeli_serie(rs.getInt("idpeli_serie"));
                 pel.setNombre(rs.getString("nombre"));
                 pel.setTipo(rs.getString("tipo"));
                 pel.setImagen(rs.getString("imagen"));
@@ -94,10 +94,10 @@ public class PeliculaDao extends DAO
 
         } catch (Exception e) {
             throw e;
-        } finally {
-            desConectarBD();
-        }
-        return pel;
+        }    
+
+     finally{this.desConectarBD();}
+     return peli;
     }
     
 
@@ -122,7 +122,7 @@ public class PeliculaDao extends DAO
         try {
             this.ConectarBd();
 
-            PreparedStatement st = (PreparedStatement) this.getCn().prepareStatement("UPDATE  Pelicula SET nombre = ?, tipo  = ?,imagen  = ?,calificacion  = ?,duracion= ? WHERE idpeli_serie=?  ");
+            PreparedStatement st = (PreparedStatement) this.getCn().prepareStatement("UPDATE peli_serie SET nombre = ?, tipo  = ?,imagen  = ?,calificacion  = ?,duracion= ? WHERE idpeli_serie=?  ");
             st.setString(1, pel.getNombre());
             st.setString(2, pel.getTipo());
             st.setString(3, pel.getImagen());
