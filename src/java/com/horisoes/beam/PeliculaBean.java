@@ -21,7 +21,9 @@ public class PeliculaBean
 {    
     
     List<Pelicula> listarPeliculas;
-
+    private Pelicula selPeliSerie;
+    
+    
     public List<Pelicula> getListarPeliculas() {
         return listarPeliculas;
     }
@@ -30,9 +32,17 @@ public class PeliculaBean
         this.listarPeliculas = listarPeliculas;
     }
     private Pelicula pelicula = new Pelicula();
-    private Pelicula peliculaSeleccionada;
+   
 
-       
+    public Pelicula getSelPeliSerie() {
+        return selPeliSerie;
+    }
+
+    public void setSelPeliSerie(Pelicula selPeliSerie) {
+        this.selPeliSerie = selPeliSerie;
+    }
+
+        
     @PostConstruct
     public void init() {
         try {
@@ -41,24 +51,12 @@ public class PeliculaBean
             Logger.getLogger(PeliculaBean.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
-
-
-    public void setPeliculaSeleccionada(Pelicula peliculaSeleccionada) {
-        this.peliculaSeleccionada = peliculaSeleccionada;
-    }
-
-    public Pelicula getPeliculaSeleccionada() {
-        return peliculaSeleccionada;
-    }
+ 
     
-    
-
     public Pelicula getPelicula() {
         return pelicula;
     }
-
-
+    
     
     public void crearPelicula() throws Exception{
         PeliculaDao dao;       
@@ -83,12 +81,7 @@ public class PeliculaBean
     
     }
         
-        
-     public void seleccionarPelicula(Pelicula pel)
-     {
-         peliculaSeleccionada = pel;
-     }
-     
+
      public void openCrearPelicula()
      {
          pelicula = new Pelicula();}

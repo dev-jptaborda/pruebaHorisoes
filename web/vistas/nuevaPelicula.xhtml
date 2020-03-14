@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+      <h:head>
+        <title>Crud Personas</title>
+      
+    </h:head>
+    <h:body>
+
+      <p:growl id="msj" showDetail="true"/>
+                <h:form>
+                              <p:outputLabel  value="Tipo" />
+                            <p:selectOneMenu value="#{peliculaBean.pelicula.tipo}">
+                                <f:selectItem  itemLabel="Seleccionar.." itemValue=""/>
+                                <f:selectItem  itemLabel="Serie" itemValue="serie"/>   
+                                <f:selectItem  itemLabel="Pelicula " itemValue="pelicula"/>
+                            </p:selectOneMenu>  
+                     
+  
+                    
+             <p:outputLabel for= "txtNombre" value="Nombre"/>
+             <p:inputText id = "txtNombre" value="#{peliculaBean.pelicula.nombre}"/>
+             
+                <p:outputLabel for= "txtImagen" value="Cargar Imagen"/>
+             <p:inputText id = "txtImagen" value="#{peliculaBean.pelicula.nombre}"/>
+             
+             
+                <p:outputLabel for= "txtCalificacion" value="Calificacion"/>
+             <p:inputText id = "txtCalificacion" value="#{peliculaBean.pelicula.nombre}"/>
+             
+             
+                <p:outputLabel for= "txturacion" value="Duracion"/>
+                <p:inputText id = "txturacion" value="#{peliculaBean.pelicula.duracion}"/>
+             
+             
+             <p:commandButton value="Registrar" actionListener="#{peliculaBean.crearPelicula()}"/>
+
+             <p:dataTable id="data" value="#{peliculaBean.listarPeliculas}" var="peliculas" >
+                  <p:column headerText="Identificador Pelicula" >
+                      <p:outputLabel value="#{peliculas.idpeli_serie}"/>
+                       </p:column>
+                  <p:column headerText="Nombre" >
+                      <p:outputLabel value="#{peliculas.nombre}"/>
+                      </p:column>
+                   <p:column headerText="Tipo" >
+                       <p:outputLabel value="#{peliculas.tipo}"/>
+                          </p:column>                      
+                 
+                 <p:column headerText="Imagen" >
+                     <p:outputLabel value="#{peliculas.imagen}"/>
+                          </p:column>  
+                                  
+                 <p:column headerText="Duracion" >
+                     <p:outputLabel value="#{peliculas.duracion}"/>
+                          </p:column>  
+                
+                <p:column headerText="Modificar" >
+            
+              </p:column> 
+                
+                <p:column headerText="Eliminar" >
+                    <p:commandLink value="Eliminar" actionListener="#{peliculaBean.eliminarPelicula(peliculas)}"  update="data"/>
+              
+                          </p:column>
+            
+              </p:dataTable>
+                    
+       
+                </h:form>
+      </h:body>
+</html>

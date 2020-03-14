@@ -22,7 +22,7 @@ public class PeliculaDao extends DAO
         try {
             this.ConectarBd();
 
-            PreparedStatement st = (PreparedStatement) this.getCn().prepareStatement("INSERT INTO Pelicula (titulo, genero,sinopsis,tipo,calificacion,imagen,estreno) values (?,?,?,?,?,?,?)");
+            PreparedStatement st = (PreparedStatement) this.getCn().prepareStatement("INSERT INTO peli_serie (nombre, tipo,imagen,calificacion,duracion) values (?,?,?,?,?)");
 
             st.setString(1, pel.getNombre());
             st.setString(2, pel.getTipo());

@@ -31,7 +31,8 @@
         <h:form id="form">
 
                       <p:commandButton  value="Listar" actionListener="#{peliculaBean.listar_Peliculas()}" update="form"/>
-            
+                       <p:commandButton value="Agregar" id="nuevo" action="/vistas/nuevaPelicula?faces=redirect=true" style="margin-right:20px;" icon="pi pi-save" />
+
                   <p:dataView var="peli" value="#{peliculaBean.listarPeliculas}" gridIcon="pi pi-th-large" listIcon="pi pi-bars">    
                       
                       
@@ -54,7 +55,7 @@
 
                 <p:dataViewListItem>
                     <h:panelGrid columns="3" style="width:100%" columnClasses="logo,detail">
-                        <p:graphicImage library="img" name="frozen.jpg"  width="150" height="200" />  
+                        <p:graphicImage library="img" name="/images/car/#{peli.imagen}-big.gif"  width="150" height="200" />  
                         <p:outputPanel>
                             <h:panelGrid columns="2" cellpadding="3">
                                 <h:outputText value="Nombre" />
@@ -68,7 +69,7 @@
 
                         <p:commandLink update=":form:detalle" oncomplete="PF('dialogo').show()" title="Ver detalles de la pelicula o serie">
                             <h:outputText styleClass="ui-icon pi pi-search" style="margin:0 auto;" />
-                             <f:setPropertyActionListener value="#{pel}" target="#{peliculaBean.pelicula}" />
+                             <f:setPropertyActionListener value="#{peli}" target="#{peliculaBean.selPeliSerie}" />
                         </p:commandLink>
                     </h:panelGrid>
                 </p:dataViewListItem>
@@ -76,22 +77,22 @@
                         
              <p:dialog header="Detalle de la Pelicula" widgetVar="dialogo" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
                 <p:outputPanel id="detalle" style="text-align:center;">
-                    <p:panelGrid  columns="2" rendered="#{not empty peliculaBean.pelicula}" columnClasses="label,value">
+                    <p:panelGrid  columns="2" rendered="#{not empty peliculaBean.selPeliSerie}" columnClasses="label,value">
                         <f:facet name="header">
                             <p:graphicImage library="img" name="frozen.jpg"  width="150" height="200"/> 
                         </f:facet>
 
                         <h:outputText value="Titulo:" />
-                        <h:outputText value="#{peliculaBean.pelicula.nombre}" />
+                        <h:outputText value="#{peliculaBean.selPeliSerie.nombre}" />
 
                         <h:outputText value="Tipo" />
-                        <h:outputText value="#{peliculaBean.pelicula.tipo}" />
+                        <h:outputText value="#{peliculaBean.selPeliSerie.tipo}" />
 
                         <h:outputText value="Calificacion:" />
-                        <h:outputText value="#{peliculaBean.pelicula.calificacion}" style="color:#{peliculaBean.pelicula.calificacion}"/>
+                        <h:outputText value="#{peliculaBean.selPeliSerie.calificacion}"/>
 
                         <h:outputText value="Estreno" />
-                        <h:outputText value="#{peliculaBean.pelicula.duracion}" />
+                        <h:outputText value="#{peliculaBean.selPeliSerie.duracion}" />
                     </p:panelGrid>
                 </p:outputPanel>
             </p:dialog> 
