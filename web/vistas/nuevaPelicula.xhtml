@@ -16,6 +16,7 @@ To change this license header, choose License Headers in Project Properties.
 
       <p:growl id="msj" showDetail="true"/>
                 <h:form id = "frm">
+                        <p:growl id="mensajes"/>
                     
                               <p:outputLabel  value="Tipo" />
                             <p:selectOneMenu value="#{peliculaBean.pelicula.tipo}">
@@ -32,7 +33,6 @@ To change this license header, choose License Headers in Project Properties.
                      <p:outputLabel value="Cargar Imagen" />
                      <p:fileUpload value="#{peliculaBean.file}" mode="simple" skinSimple="true"/>
 
-             
                 <p:outputLabel for= "txtCalificacion" value="Calificacion"/>
                 <p:inputText id = "txtCalificacion" value="#{peliculaBean.pelicula.calificacion}"/>
              
@@ -41,7 +41,7 @@ To change this license header, choose License Headers in Project Properties.
                 <p:inputText id = "txturacion" value="#{peliculaBean.pelicula.duracion}"/>
 
 
-             <p:commandButton value="Registrar" actionListener="#{peliculaBean.crearPelicula()}"/>
+             <p:commandButton value="Registrar" actionListener="#{peliculaBean.crearPelicula()}" update = "data"/>
              
              <p:dataTable id="data" value="#{peliculaBean.listarPeliculas}" var="pelic" >
                   <p:column headerText="Identificador Pelicula" >
@@ -91,11 +91,9 @@ To change this license header, choose License Headers in Project Properties.
                             </p:selectOneMenu>  
                    
                      <p:outputLabel value="Imagen" />
-                <h:form enctype="multipart/form-data">        
+
                    <p:fileUpload value="#{peliculaBean.selPeliSerie.imagen}" mode="simple" skinSimple="true"/>
-                   <br />
-                   <p:commandButton value="Submit" ajax="false" action="#{fileUploadView.upload}" disabled="true" />
-               </h:form>
+
                      
                      
                                   
