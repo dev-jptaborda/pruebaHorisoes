@@ -44,7 +44,7 @@ To change this license header, choose License Headers in Project Properties.
                 <p:inputText id = "txturacion" value="#{peliculaBean.pelicula.duracion}"/>
 
 
-             <p:commandButton value="Registrar" actionListener="#{peliculaBean.crearPelicula()}" update ="data"/>
+             <p:commandButton value="Registrar" actionListener="#{peliculaBean.crearPelicula()}" update ="frm"/>
              
              
                          <br></br>
@@ -72,12 +72,13 @@ To change this license header, choose License Headers in Project Properties.
                      <p:outputLabel value="#{pelic.duracion}"/>
                           </p:column>  
                 
+             
            <p:column headerText="Modificar" >
-                 <p:commandLink value="Modificar" actionListener="#{peliculaBean.leerEdirarPelicula(pelic)}" oncomplete="PF('wdlDatos').show();" update=":dlgDatos"/>
+               <p:commandLink value="Modificar" actionListener="#{peliculaBean.leerEdirarPelicula(pelic)}" oncomplete="PF('wdlDatos').show();" update=":dlgDatos"/>
               </p:column> 
                 
                 <p:column headerText="Eliminar" >
-                    <p:commandLink value="Eliminar" actionListener="#{peliculaBean.eliminarPelicula(pelic)}"  update="data"/>
+                    <p:commandLink value="Eliminar" actionListener="#{peliculaBean.eliminarPelicula(pelic)}"  update="frm"/>
                 </p:column>
             
               </p:dataTable>
@@ -106,7 +107,7 @@ To change this license header, choose License Headers in Project Properties.
        <p:outputLabel value="Duracion"/> 
                      <p:inputText value="#{peliculaBean.pelicula.duracion}"/>
                 
-                <p:commandButton value="Cambiar" actionListener="#{peliculaBean.editarPelicula()}" oncomplete="PF('wdlDatos').hide();" update=":frm:data"/>
+                <p:commandButton value="Cambiar" actionListener="#{peliculaBean.editarPelicula()}" oncomplete="PF('wdlDatos').hide();" update="frm"/>
              
         </h:form>
         </p:dialog>
