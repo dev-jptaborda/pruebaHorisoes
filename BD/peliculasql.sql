@@ -39,7 +39,7 @@ CREATE TABLE `peli_serie` (
 
 LOCK TABLES `peli_serie` WRITE;
 /*!40000 ALTER TABLE `peli_serie` DISABLE KEYS */;
-INSERT INTO `peli_serie` VALUES (1,'Que paso con lunes','pelicula','1.png',5,123),(2,'Saw','serie','2.png',7,4545),(8,'Perdida','serie','3.png',454,48);
+INSERT INTO `peli_serie` VALUES (1,'Que paso con lunes','pelicula','1.png',5,123),(2,'Saw','serie','2.png',7,455),(8,'Perdida','serie','3.png',454,48);
 /*!40000 ALTER TABLE `peli_serie` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
