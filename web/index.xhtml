@@ -31,11 +31,14 @@
                 <h2 style="margin-top:0">Cartelera</h2><br></br>
         <h:form id="form">
 
-                      <p:commandButton  value="Listar" actionListener="#{peliculaBean.listar_Peliculas()}" update="form"/>
-                       <p:commandButton value="Gestionar Pelicula o Serie" id="nuevo" action="/vistas/nuevaPelicula?faces=redirect=true" style="margin-right:20px;" icon="pi pi-save" />
+                      <p:commandButton  value="Top Peliculas / Series" actionListener="#{peliculaBean.upcoming()}" update="form" style="margin-right:20px;" icon="pi pi-tag" />
+                        <p:commandButton value="Gestionar Pelicula o Serie" id="nuevo" action="/vistas/nuevaPelicula?faces=redirect=true" style="margin-right:20px;" icon="pi pi-save" />
+                      <br></br>
+<br></br>
 
+             <p:growl id="mensajes"/>
                   <p:dataView var="peli" value="#{peliculaBean.listarPeliculas}" gridIcon="pi pi-th-large" listIcon="pi pi-bars">    
-                      
+         
                       
                 <p:dataViewGridItem>
                     <p:panel header="#{peli.nombre}" style="text-align:center">

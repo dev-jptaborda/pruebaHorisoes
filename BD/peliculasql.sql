@@ -30,7 +30,7 @@ CREATE TABLE `peli_serie` (
   `calificacion` int DEFAULT NULL,
   `duracion` int DEFAULT NULL,
   PRIMARY KEY (`idpeli_serie`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +39,7 @@ CREATE TABLE `peli_serie` (
 
 LOCK TABLES `peli_serie` WRITE;
 /*!40000 ALTER TABLE `peli_serie` DISABLE KEYS */;
-INSERT INTO `peli_serie` VALUES (1,'Que paso con lunes','pelicula','1.png',5,123),(2,'Saw','serie','2.png',5,4545),(8,'Perdida','serie','3.png',454,45);
+INSERT INTO `peli_serie` VALUES (1,'Que paso con lunes','pelicula','1.png',5,123),(2,'Saw','serie','2.png',7,4545),(8,'Perdida','serie','3.png',454,48);
 /*!40000 ALTER TABLE `peli_serie` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-03-14 21:14:57
+-- Dump completed on 2020-03-14 23:18:37

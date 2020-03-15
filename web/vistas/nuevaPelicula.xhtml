@@ -13,14 +13,14 @@ To change this license header, choose License Headers in Project Properties.
       
     </h:head>
     <h:body>
-
                    
         <h2 style="margin-top:0">Crud Peliculas y Series</h2><br></br>
         
-      <p:growl id="msj" showDetail="true"/>
+
                 <h:form id = "frm">
-                        <p:growl id="mensajes"/>
-                    
+                  <p:growl id="mensajes"/>
+                        
+                                         
                               <p:outputLabel  value="Tipo" />
                             <p:selectOneMenu value="#{peliculaBean.pelicula.tipo}">
                                 <f:selectItem  itemLabel="Seleccionar.." itemValue=""/>
@@ -33,8 +33,8 @@ To change this license header, choose License Headers in Project Properties.
              <p:inputText id = "txtNombre" value="#{peliculaBean.pelicula.nombre}"/>
              
                                      
-                     <p:outputLabel value="Cargar Imagen" />
-                     <p:fileUpload value="#{peliculaBean.pelicula.imagen}" mode="simple" skinSimple="true"/>
+                     <p:outputLabel value="Cargar Imagen"/>
+                     <p:fileUpload value="#{peliculaBean.pelicula.imagen}" mode="simple" skinSimple="true" required="true"/>
 
                 <p:outputLabel for= "txtCalificacion" value="Calificacion"/>
                 <p:inputText id = "txtCalificacion" value="#{peliculaBean.pelicula.calificacion}"/>
@@ -44,7 +44,7 @@ To change this license header, choose License Headers in Project Properties.
                 <p:inputText id = "txturacion" value="#{peliculaBean.pelicula.duracion}"/>
 
 
-             <p:commandButton value="Registrar" actionListener="#{peliculaBean.crearPelicula()}" update = "data"/>
+             <p:commandButton value="Registrar" actionListener="#{peliculaBean.crearPelicula()}" update ="data"/>
              
              
                          <br></br>
@@ -75,8 +75,6 @@ To change this license header, choose License Headers in Project Properties.
            <p:column headerText="Modificar" >
                  <p:commandLink value="Modificar" actionListener="#{peliculaBean.leerEdirarPelicula(pelic)}" oncomplete="PF('wdlDatos').show();" update=":dlgDatos"/>
               </p:column> 
-                 
-                 
                 
                 <p:column headerText="Eliminar" >
                     <p:commandLink value="Eliminar" actionListener="#{peliculaBean.eliminarPelicula(pelic)}"  update="data"/>
@@ -102,9 +100,7 @@ To change this license header, choose License Headers in Project Properties.
                    
                      <p:outputLabel value="Imagen" />
 
-                   <p:fileUpload value="#{peliculaBean.selPeliSerie.imagen}" mode="simple" skinSimple="true"/>
-
-                     
+                   <p:fileUpload value="#{peliculaBean.selPeliSerie.imagen}" mode="simple" skinSimple="true"/>                    
                      
                                   
        <p:outputLabel value="Duracion"/> 

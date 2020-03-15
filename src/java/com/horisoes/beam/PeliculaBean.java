@@ -24,6 +24,15 @@ public class PeliculaBean
     List<Pelicula> listarPeliculas;
     private Pelicula selPeliSerie;
     private Pelicula pelicula = new Pelicula();
+    private boolean upcoming = false;
+
+    public boolean isUpcoming() {
+        return upcoming;
+    }
+
+    public void setUpcoming(boolean upcoming) {
+        this.upcoming = upcoming;
+    }
     
       private UploadedFile file;
 
@@ -89,9 +98,7 @@ public class PeliculaBean
         } catch (Exception e) {
             throw e;
         }
-    
-    }
-        
+        }
 
      public void openCrearPelicula()
      {
@@ -136,4 +143,21 @@ public class PeliculaBean
             throw e;
         } 
      }   
+     
+          
+    /**
+     *
+     * @throws java.lang.Exception
+     */
+    public void upcoming() throws Exception
+     {
+        upcoming = true;
+        PeliculaDao dao;       
+        try {
+            dao = new PeliculaDao(); 
+           listarPeliculas= dao.listarPeliculasTop(upcoming);
+        } catch (Exception e) {
+            throw e;
+        } 
+     }
 }
