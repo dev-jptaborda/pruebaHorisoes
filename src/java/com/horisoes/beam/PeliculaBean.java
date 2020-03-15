@@ -9,6 +9,7 @@ import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import org.primefaces.model.UploadedFile;
 
 /**
  *
@@ -22,7 +23,17 @@ public class PeliculaBean
     
     List<Pelicula> listarPeliculas;
     private Pelicula selPeliSerie;
+    private Pelicula pelicula = new Pelicula();
     
+      private UploadedFile file;
+
+    public UploadedFile getFile() {
+        return file;
+    }
+
+    public void setFile(UploadedFile file) {
+        this.file = file;
+    }
     
     public List<Pelicula> getListarPeliculas() {
         return listarPeliculas;
@@ -31,7 +42,7 @@ public class PeliculaBean
     public void setListarPeliculas(List<Pelicula> listarPeliculas) {
         this.listarPeliculas = listarPeliculas;
     }
-    private Pelicula pelicula = new Pelicula();
+    
    
 
     public Pelicula getSelPeliSerie() {
@@ -124,29 +135,5 @@ public class PeliculaBean
         } catch (Exception e) {
             throw e;
         } 
-     }
-     
-     public void topRated()throws Exception
-     {
-
-        PeliculaDao dao;       
-        try {
-            dao = new PeliculaDao(); 
-        listarPeliculas= dao.listar();
-        } catch (Exception e) {
-            throw e;
-        } 
-     }
-     
-     public void upcoming()throws Exception
-     {
-
-        PeliculaDao dao;       
-        try {
-            dao = new PeliculaDao(); 
-        listarPeliculas= dao.listar();
-        } catch (Exception e) {
-            throw e;
-        } 
-     }     
+     }   
 }

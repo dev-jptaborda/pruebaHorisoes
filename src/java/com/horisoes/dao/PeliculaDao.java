@@ -8,6 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import org.primefaces.model.UploadedFile;
 
 /**
  *
@@ -19,7 +22,8 @@ public class PeliculaDao extends DAO
 
     public void agregar(Pelicula pel) throws SQLException {
 
-        try {
+        try 
+        {
             this.ConectarBd();
 
             PreparedStatement st = (PreparedStatement) this.getCn().prepareStatement("INSERT INTO peli_serie (nombre, tipo,imagen,calificacion,duracion) values (?,?,?,?,?)");
@@ -31,8 +35,12 @@ public class PeliculaDao extends DAO
             st.setInt(5, pel.getDuracion());
 
             st.executeUpdate();
+            
+            FacesMessage mesanjes = new FacesMessage ("Registro Agredado");
+            FacesContext.getCurrentInstance().addMessage(null, mesanjes);
 
-        } catch (ClassNotFoundException ex) {
+        } catch (ClassNotFoundException ex) 
+        {
             Logger.getLogger(PeliculaDao.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             this.desConectarBD();
@@ -108,6 +116,13 @@ public class PeliculaDao extends DAO
 
             PreparedStatement st = (PreparedStatement) this.getCn().prepareStatement("Delete from peli_serie where idpeli_serie = "+pel.getIdpeli_serie());
             st.executeUpdate();
+            
+            FacesMessage mesanjess = new FacesMessage ("Registro Eliminado");
+            FacesContext.getCurrentInstance().addMessage(null, mesanjess);
+            
+          
+   
+            
 
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(PeliculaDao.class.getName()).log(Level.SEVERE, null, ex);
