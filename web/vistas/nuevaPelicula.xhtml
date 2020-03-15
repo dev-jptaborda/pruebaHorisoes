@@ -14,6 +14,9 @@ To change this license header, choose License Headers in Project Properties.
     </h:head>
     <h:body>
 
+                   
+        <h2 style="margin-top:0">Crud Peliculas y Series</h2><br></br>
+        
       <p:growl id="msj" showDetail="true"/>
                 <h:form id = "frm">
                         <p:growl id="mensajes"/>
@@ -24,14 +27,14 @@ To change this license header, choose License Headers in Project Properties.
                                 <f:selectItem  itemLabel="Serie" itemValue="serie"/>   
                                 <f:selectItem  itemLabel="Pelicula " itemValue="pelicula"/>
                             </p:selectOneMenu>  
-                     
+                      
   
                     <p:outputLabel for= "txtNombre" value="Nombre"/>
              <p:inputText id = "txtNombre" value="#{peliculaBean.pelicula.nombre}"/>
              
                                      
                      <p:outputLabel value="Cargar Imagen" />
-                     <p:fileUpload value="#{peliculaBean.file}" mode="simple" skinSimple="true"/>
+                     <p:fileUpload value="#{peliculaBean.pelicula.imagen}" mode="simple" skinSimple="true"/>
 
                 <p:outputLabel for= "txtCalificacion" value="Calificacion"/>
                 <p:inputText id = "txtCalificacion" value="#{peliculaBean.pelicula.calificacion}"/>
@@ -42,6 +45,13 @@ To change this license header, choose License Headers in Project Properties.
 
 
              <p:commandButton value="Registrar" actionListener="#{peliculaBean.crearPelicula()}" update = "data"/>
+             
+             
+                         <br></br>
+ 
+<p:separator /><br></br>
+
+
              
              <p:dataTable id="data" value="#{peliculaBean.listarPeliculas}" var="pelic" >
                   <p:column headerText="Identificador Pelicula" >
@@ -104,6 +114,7 @@ To change this license header, choose License Headers in Project Properties.
              
         </h:form>
         </p:dialog>
-      
+      <br></br>
+        <p:commandButton value="Volver a Cartelera" id="back" action="/index?faces=redirect=true" style="margin-right:20px;" icon="pi pi-back" />
       </h:body>
 </html>
